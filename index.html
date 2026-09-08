@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -33,6 +32,43 @@ body{
     linear-gradient(135deg,#10001c,#30004d,#09001b);
 }
 
+/* =====================================================
+   INITIAL START SCREEN
+===================================================== */
+
+#startScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #050008;
+    background: radial-gradient(circle at center, #65008c, #20002e 55%, #050008);
+    transition: opacity 0.4s ease;
+}
+
+.start-btn {
+    padding: 18px 45px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(45deg, #ff4081, #7c4dff);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(255, 64, 129, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: pulse 1.5s infinite;
+}
+
+.start-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 45px rgba(255, 64, 129, 0.9);
+}
+
 
 /* =====================================================
    10 SECOND COUNTDOWN
@@ -45,17 +81,17 @@ body{
 
     z-index:9999;
 
-    display:flex;
+    display:none;
     flex-direction:column;
     justify-content:center;
     align-items:center;
 
     text-align:center;
 
-    background:
-    radial-gradient(circle at center,#65008c,#20002e 55%,#050008);
+    background: #050008;
+    background: radial-gradient(circle at center,#65008c,#20002e 55%,#050008);
 
-    transition:opacity 1s ease;
+    transition:opacity 0.6s ease;
 }
 
 .countdown-title{
@@ -92,9 +128,7 @@ body{
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 
-    animation:
-    timerGradient 2s linear infinite,
-    timerZoom 1s ease-in-out infinite;
+    animation: timerGradient 2s linear infinite;
 }
 
 .countdown-sub{
@@ -114,17 +148,6 @@ body{
 
     100%{
         background-position:400%;
-    }
-}
-
-@keyframes timerZoom{
-
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.08);
     }
 }
 
@@ -399,6 +422,7 @@ body{
     cursor:pointer;
 
     transition:.3s;
+    display: none;
 }
 
 .music:hover{
@@ -410,7 +434,7 @@ body{
 
 
 /* =====================================================
-   MAIN CARD
+   MAIN CARD & WISH ANIMATIONS
 ===================================================== */
 
 .container{
@@ -424,6 +448,7 @@ body{
     position:relative;
 
     z-index:10;
+    display: none;
 }
 
 .card{
@@ -538,7 +563,7 @@ h1{
 
 
 /* =====================================================
-   WISH
+   WISH ANIMATED TEXT
 ===================================================== */
 
 .wish{
@@ -593,6 +618,33 @@ h1{
     color:#ffb5d4!important;
 
     margin-top:30px;
+}
+
+/* WISH TEXT ANIMATION CLASS */
+.animate-wish .wish-title,
+.animate-wish p {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Delay for each element */
+.animate-wish .wish-title { animation-delay: 0.2s; }
+.animate-wish p:nth-child(2) { animation-delay: 0.5s; }
+.animate-wish p:nth-child(3) { animation-delay: 0.8s; }
+.animate-wish p:nth-child(4) { animation-delay: 1.1s; }
+.animate-wish p:nth-child(5) { animation-delay: 1.4s; }
+.animate-wish p:nth-child(6) { animation-delay: 1.7s; }
+.animate-wish p:nth-child(7) { animation-delay: 2.0s; }
+.animate-wish p:nth-child(8) { animation-delay: 2.3s; }
+.animate-wish p:nth-child(9) { animation-delay: 2.6s; }
+.animate-wish .big { animation-delay: 2.9s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -717,6 +769,14 @@ h1{
 
 <body>
 
+<!-- =====================================================
+     INITIAL START SCREEN
+===================================================== -->
+
+<div id="startScreen">
+    <button class="start-btn" id="startBtn">🎵 START</button>
+</div>
+
 
 <!-- =====================================================
      10 SECOND COUNTDOWN
@@ -771,7 +831,7 @@ h1{
      MAIN
 ===================================================== -->
 
-<div class="container">
+<div class="container" id="mainContainer">
 
 <div class="card">
 
@@ -812,9 +872,9 @@ h1{
 
     <!-- =================================================
          BIG WISH
-    ================================================= -->
+    ===================================================== -->
 
-    <div class="wish">
+    <div class="wish" id="wishCard">
 
 
         <div class="wish-title">
@@ -829,7 +889,7 @@ h1{
             🎉 <b>শুভ জন্মদিন!</b> 🎂
 
             আজকের এই সুন্দর দিনে তোর জন্য রইলো
-            অনেক অনেক শুভেচ্ছা, দোয়া এবং শুভকামনা।
+            অনেক অনেক শুভেচ্ছা, দোয়া এবং শুভকামনা।
 
             তোর জীবনের প্রতিটি দিন যেন আনন্দ,
             হাসি আর সুন্দর মুহূর্তে ভরে ওঠে।
@@ -840,13 +900,13 @@ h1{
         <p>
 
             তোর জীবনের নতুন এই বছরটা যেন আগের
-            সব বছরের চেয়ে আরও সুন্দর হয়।
+            সব বছরের চেয়ে আরও সুন্দর হয়।
 
             তোর প্রতিটি স্বপ্ন পূরণ হোক,
             প্রতিটি ইচ্ছা বাস্তবে পরিণত হোক
 
             এবং জীবনের প্রতিটি নতুন সুযোগ
-            তোকে সাফল্যের আরও কাছে নিয়ে যাক।
+            তোকে সাফল্যের আরও কাছে নিয়ে যাক।
 
         </p>
 
@@ -855,9 +915,9 @@ h1{
 
             জীবনে যত বাধাই আসুক,
             তুই যেন কখনো নিজের উপর বিশ্বাস
-            হারিয়ে না ফেলিস।
+            হারিয়ে না ফেলিস।
 
-            সবসময় সাহস নিয়ে সামনে এগিয়ে যা
+            সবসময় সাহস নিয়ে সামনে এগিয়ে যা
             এবং নিজের স্বপ্নের জন্য চেষ্টা করে যা।
 
         </p>
@@ -865,17 +925,17 @@ h1{
 
         <p>
 
-            তোর মুখের হাসিটা যেন সবসময় এমনই থাকে।
+            তোর মুখের হাসিটা যেন সবসময় এমনই থাকে।
 
-            তোর চারপাশে সবসময় ভালো মানুষ,
-            সুন্দর সময় এবং অসংখ্য আনন্দের মুহূর্ত থাকুক।
+            তোর চারপাশে সবসময় ভালো মানুষ,
+            সুন্দর সময় এবং অসংখ্য আনন্দের মুহূর্ত থাকুক।
 
         </p>
 
 
         <p>
 
-            পড়াশোনা, ক্যারিয়ার, ভবিষ্যৎ কিংবা জীবনের
+            পড়াশোনা, ক্যারিয়ার, ভবিষ্যৎ কিংবা জীবনের
             যেকোনো লক্ষ্য—সবকিছুতেই তুই সফল হ।
 
             তুই যে স্বপ্নগুলো আজ দেখছিস,
@@ -888,8 +948,8 @@ h1{
 
         <p>
 
-            আমাদের বন্ধুত্বের এই সুন্দর সময়গুলো
-            যেন সবসময় মনে থাকে।
+            আমাদের বন্ধুত্বের এই সুন্দর সময়গুলো
+            যেন সবসময় মনে থাকে।
 
             একসাথে করা হাসি-ঠাট্টা,
             আড্ডা, পাগলামি আর অসংখ্য স্মৃতি
@@ -902,23 +962,23 @@ h1{
 
         <p>
 
-            আজকের দিনটা শুধু একটা জন্মদিন নয়—
+            আজকের দিনটা শুধু একটা জন্মদিন নয়—
 
             এটা তোর জীবনের আরও একটি সুন্দর
-            অধ্যায়ের শুরু।
+            অধ্যায়ের শুরু।
 
             তাই নতুন বছরটা শুরু হোক নতুন স্বপ্ন,
-            নতুন আশা আর নতুন সাফল্য দিয়ে।
+            নতুন আশা আর নতুন সাফল্য দিয়ে।
 
         </p>
 
 
         <p>
 
-            তোর জন্য মন থেকে একটাই দোয়া—
+            তোর জন্য মন থেকে একটাই দোয়া—
 
             <b>
-                আল্লাহ যেন তোকে সবসময় সুস্থ,
+                আল্লাহ যেন তোকে সবসময় সুস্থ,
                 সুখী ও সফল রাখেন এবং তোর জীবনের
                 প্রতিটি ভালো ইচ্ছা পূরণ করেন।
             </b>
@@ -1065,45 +1125,37 @@ for(let i = 0; i < 60; i++){
 
 
 /* =====================================================
-   MUSIC
+   MUSIC & START LOGIC
 ===================================================== */
 
-const music =
-    document.getElementById("birthdayMusic");
-
-const musicBtn =
-    document.getElementById("musicBtn");
-
-
-/* Music volume */
+const music = document.getElementById("birthdayMusic");
+const musicBtn = document.getElementById("musicBtn");
+const startScreen = document.getElementById("startScreen");
+const startBtn = document.getElementById("startBtn");
+const countdownScreen = document.getElementById("countdownScreen");
+const timer = document.getElementById("timer");
+const mainContainer = document.getElementById("mainContainer");
+const wishCard = document.getElementById("wishCard");
 
 music.volume = 0.7;
 
+startBtn.addEventListener("click", () => {
+    music.play().then(() => {
+        musicBtn.innerHTML = "🔊 Music On";
+    }).catch((error) => {
+        console.log("Autoplay blocked or error:", error);
+    });
 
-/* Autoplay attempt */
-
-window.addEventListener("load", async () => {
-
-    try{
-
-        await music.play();
-
-        musicBtn.innerHTML =
-            "🔊 Music On";
-
-    }
-
-    catch(error){
-
-        musicBtn.innerHTML =
-            "🎵 Play Music";
-
-    }
-
+    startScreen.style.opacity = "0";
+    setTimeout(() => {
+        startScreen.style.display = "none";
+        countdownScreen.style.display = "flex";
+        startAccurateCountdown();
+    }, 400);
 });
 
 
-/* Music button */
+/* Music button toggle */
 
 musicBtn.addEventListener("click", async () => {
 
@@ -1141,59 +1193,48 @@ musicBtn.addEventListener("click", async () => {
 
 
 /* =====================================================
-   10 SECOND COUNTDOWN
+   REAL-TIME ACCURATE COUNTDOWN (NO LAG)
 ===================================================== */
 
-let timeLeft = 10;
+function startAccurateCountdown() {
+    let duration = 10;
+    let startTime = Date.now();
+    let lastSecond = duration;
 
-const countdownScreen =
-    document.getElementById(
-        "countdownScreen"
-    );
+    timer.textContent = duration;
 
-const timer =
-    document.getElementById("timer");
+    const timerInterval = setInterval(() => {
+        let elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+        let remainingTime = duration - elapsedTime;
 
+        if (remainingTime !== lastSecond) {
+            lastSecond = remainingTime;
 
-const countdown =
-    setInterval(() => {
-
-        timeLeft--;
-
-        timer.textContent =
-            timeLeft;
-
-
-        if(timeLeft <= 0){
-
-            clearInterval(countdown);
-
-            timer.textContent =
-                "🎉";
-
-
-            setTimeout(() => {
-
-                countdownScreen.style.opacity =
-                    "0";
-
+            if (remainingTime > 0) {
+                timer.textContent = remainingTime;
+            } else {
+                clearInterval(timerInterval);
+                timer.textContent = "🎉";
 
                 setTimeout(() => {
+                    countdownScreen.style.opacity = "0";
 
-                    countdownScreen.style.display =
-                        "none";
+                    setTimeout(() => {
+                        countdownScreen.style.display = "none";
+                        mainContainer.style.display = "block";
+                        musicBtn.style.display = "block";
+                        
+                        // Trigger Wish Text Animation
+                        wishCard.classList.add("animate-wish");
+                    }, 600);
 
-                },1000);
-
-            },700);
-
+                }, 500);
+            }
         }
-
-    },1000);
-
+    }, 100);
+}
 
 </script>
 
 </body>
 </html>
-```
