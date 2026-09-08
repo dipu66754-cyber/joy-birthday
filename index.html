@@ -1,0 +1,1199 @@
+```html
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Joy 🎂</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    font-family:'Hind Siliguri',sans-serif;
+    overflow-x:hidden;
+    color:white;
+
+    background:
+    radial-gradient(circle at 15% 20%,#ff4d8d55,transparent 30%),
+    radial-gradient(circle at 85% 70%,#7b4dff55,transparent 30%),
+    linear-gradient(135deg,#10001c,#30004d,#09001b);
+}
+
+
+/* =====================================================
+   10 SECOND COUNTDOWN
+===================================================== */
+
+#countdownScreen{
+
+    position:fixed;
+    inset:0;
+
+    z-index:9999;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    background:
+    radial-gradient(circle at center,#65008c,#20002e 55%,#050008);
+
+    transition:opacity 1s ease;
+}
+
+.countdown-title{
+
+    font-size:clamp(26px,6vw,55px);
+
+    color:#ffd166;
+
+    margin-bottom:15px;
+
+    animation:pulse 1s infinite;
+}
+
+#timer{
+
+    font-size:clamp(120px,28vw,240px);
+
+    font-weight:700;
+
+    line-height:1;
+
+    background:
+    linear-gradient(
+        90deg,
+        #ffffff,
+        #ffd166,
+        #ff5caa,
+        #7c4dff,
+        #ffffff
+    );
+
+    background-size:400%;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:
+    timerGradient 2s linear infinite,
+    timerZoom 1s ease-in-out infinite;
+}
+
+.countdown-sub{
+
+    margin-top:25px;
+
+    font-size:clamp(16px,4vw,23px);
+
+    color:#ffe4ef;
+}
+
+@keyframes timerGradient{
+
+    0%{
+        background-position:0%;
+    }
+
+    100%{
+        background-position:400%;
+    }
+}
+
+@keyframes timerZoom{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+@keyframes pulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+.bg{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:0;
+}
+
+.star{
+
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    background:white;
+
+    border-radius:50%;
+
+    animation:blink 2s infinite alternate;
+}
+
+@keyframes blink{
+
+    from{
+        opacity:.2;
+        transform:scale(.5);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.5);
+    }
+}
+
+
+/* =====================================================
+   BIRTHDAY PAPER
+===================================================== */
+
+.paper{
+
+    position:fixed;
+
+    top:-50px;
+
+    z-index:20;
+
+    pointer-events:none;
+
+    font-size:18px;
+
+    animation:paperFall linear forwards;
+}
+
+@keyframes paperFall{
+
+    0%{
+
+        transform:
+        translateY(-50px)
+        translateX(0)
+        rotate(0deg);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    50%{
+
+        transform:
+        translateY(55vh)
+        translateX(80px)
+        rotate(360deg);
+    }
+
+    100%{
+
+        transform:
+        translateY(110vh)
+        translateX(-80px)
+        rotate(720deg);
+
+        opacity:.9;
+    }
+}
+
+
+/* =====================================================
+   BALLOONS
+===================================================== */
+
+.balloon{
+
+    position:fixed;
+
+    bottom:-150px;
+
+    width:65px;
+    height:82px;
+
+    border-radius:50%;
+
+    z-index:2;
+
+    opacity:.8;
+
+    animation:balloonUp linear infinite;
+}
+
+.balloon:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:2px;
+    height:110px;
+
+    background:rgba(255,255,255,.5);
+
+    left:50%;
+    top:78px;
+}
+
+.balloon:before{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:-5px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    border-left:6px solid transparent;
+    border-right:6px solid transparent;
+    border-top:10px solid currentColor;
+}
+
+.balloon1{
+
+    left:5%;
+
+    background:#ff4081;
+    color:#ff4081;
+
+    animation-duration:13s;
+}
+
+.balloon2{
+
+    left:25%;
+
+    background:#7c4dff;
+    color:#7c4dff;
+
+    animation-duration:16s;
+
+    animation-delay:2s;
+}
+
+.balloon3{
+
+    left:48%;
+
+    background:#00cfff;
+    color:#00cfff;
+
+    animation-duration:14s;
+
+    animation-delay:4s;
+}
+
+.balloon4{
+
+    left:72%;
+
+    background:#ffc107;
+    color:#ffc107;
+
+    animation-duration:17s;
+
+    animation-delay:1s;
+}
+
+.balloon5{
+
+    left:90%;
+
+    background:#ff5252;
+    color:#ff5252;
+
+    animation-duration:15s;
+
+    animation-delay:5s;
+}
+
+@keyframes balloonUp{
+
+    0%{
+        transform:translateY(0) rotate(-5deg);
+    }
+
+    50%{
+        transform:translateY(-55vh) rotate(5deg);
+    }
+
+    100%{
+        transform:translateY(-125vh) rotate(-5deg);
+    }
+}
+
+
+/* =====================================================
+   MUSIC BUTTON
+===================================================== */
+
+.music{
+
+    position:fixed;
+
+    right:20px;
+    top:20px;
+
+    z-index:100;
+
+    border:none;
+
+    color:white;
+
+    background:rgba(255,255,255,.13);
+
+    border:1px solid rgba(255,255,255,.3);
+
+    backdrop-filter:blur(15px);
+
+    padding:13px 20px;
+
+    border-radius:50px;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.music:hover{
+
+    transform:scale(1.08);
+
+    background:rgba(255,255,255,.25);
+}
+
+
+/* =====================================================
+   MAIN CARD
+===================================================== */
+
+.container{
+
+    width:min(1000px,92%);
+
+    margin:auto;
+
+    padding:70px 0;
+
+    position:relative;
+
+    z-index:10;
+}
+
+.card{
+
+    text-align:center;
+
+    padding:55px 45px;
+
+    border-radius:35px;
+
+    background:rgba(255,255,255,.10);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+    0 30px 100px rgba(0,0,0,.5),
+    inset 0 0 40px rgba(255,255,255,.04);
+}
+
+
+/* =====================================================
+   CAKE
+===================================================== */
+
+.cake{
+
+    font-size:90px;
+
+    animation:cake 2s ease-in-out infinite;
+
+    filter:drop-shadow(0 0 25px #ff9d00);
+}
+
+@keyframes cake{
+
+    0%,100%{
+
+        transform:
+        translateY(0)
+        rotate(-3deg);
+    }
+
+    50%{
+
+        transform:
+        translateY(-15px)
+        rotate(3deg);
+    }
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.top{
+
+    margin-top:15px;
+
+    font-size:23px;
+
+    color:#ffd7e8;
+}
+
+h1{
+
+    margin-top:10px;
+
+    font-size:clamp(55px,10vw,105px);
+
+    line-height:1.05;
+
+    background:
+    linear-gradient(
+        90deg,
+        #fff,
+        #ffd166,
+        #ff5caa,
+        #fff
+    );
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:titleGradient 5s linear infinite;
+}
+
+@keyframes titleGradient{
+
+    from{
+        background-position:0%;
+    }
+
+    to{
+        background-position:300%;
+    }
+}
+
+.subtitle{
+
+    margin-top:20px;
+
+    font-size:28px;
+
+    color:#ffe4ef;
+}
+
+
+/* =====================================================
+   WISH
+===================================================== */
+
+.wish{
+
+    margin-top:45px;
+
+    padding:45px;
+
+    text-align:left;
+
+    border-radius:30px;
+
+    background:rgba(0,0,0,.22);
+
+    border:1px solid rgba(255,255,255,.17);
+
+    box-shadow:
+    inset 0 0 50px rgba(255,255,255,.03),
+    0 10px 40px rgba(0,0,0,.2);
+}
+
+.wish-title{
+
+    text-align:center;
+
+    font-size:40px;
+
+    color:#ffd166;
+
+    margin-bottom:30px;
+}
+
+.wish p{
+
+    font-size:23px;
+
+    line-height:2;
+
+    margin-bottom:20px;
+
+    color:#fff;
+}
+
+.big{
+
+    text-align:center;
+
+    font-size:32px!important;
+
+    font-weight:700;
+
+    color:#ffb5d4!important;
+
+    margin-top:30px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+
+    margin-top:35px;
+
+    font-size:20px;
+
+    color:#e5d5ff;
+
+    text-shadow:
+    0 0 10px #ff5caa,
+    0 0 20px #7c4dff;
+
+    animation:footerGlow 2s infinite alternate;
+}
+
+@keyframes footerGlow{
+
+    from{
+        opacity:.7;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    .container{
+
+        padding:50px 0;
+    }
+
+    .card{
+
+        padding:35px 20px;
+
+        border-radius:25px;
+    }
+
+    .cake{
+
+        font-size:65px;
+    }
+
+    .top{
+
+        font-size:19px;
+    }
+
+    h1{
+
+        font-size:55px;
+    }
+
+    .subtitle{
+
+        font-size:21px;
+    }
+
+    .wish{
+
+        padding:25px 20px;
+    }
+
+    .wish-title{
+
+        font-size:29px;
+    }
+
+    .wish p{
+
+        font-size:19px;
+
+        line-height:1.9;
+    }
+
+    .big{
+
+        font-size:25px!important;
+    }
+
+    .music{
+
+        font-size:13px;
+
+        padding:10px 15px;
+
+        right:12px;
+
+        top:12px;
+    }
+
+    .balloon{
+
+        width:45px;
+
+        height:60px;
+    }
+
+    .footer{
+
+        font-size:17px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     10 SECOND COUNTDOWN
+===================================================== -->
+
+<div id="countdownScreen">
+
+    <div class="countdown-title">
+        🎉 Get Ready Joy! 🎉
+    </div>
+
+    <div id="timer">
+        10
+    </div>
+
+    <div class="countdown-sub">
+        🎂 Your Birthday Surprise Is Coming... 🎁
+    </div>
+
+</div>
+
+
+<!-- BACKGROUND -->
+
+<div class="bg" id="bg"></div>
+
+
+<!-- BALLOONS -->
+
+<div class="balloon balloon1"></div>
+<div class="balloon balloon2"></div>
+<div class="balloon balloon3"></div>
+<div class="balloon balloon4"></div>
+<div class="balloon balloon5"></div>
+
+
+<!-- MUSIC -->
+
+<audio id="birthdayMusic" loop preload="auto">
+    <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- MUSIC BUTTON -->
+
+<button class="music" id="musicBtn">
+    🎵 Play Music
+</button>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<div class="container">
+
+<div class="card">
+
+
+    <!-- CAKE -->
+
+    <div class="cake">
+        🎂
+    </div>
+
+
+    <!-- TOP TEXT -->
+
+    <div class="top">
+        ✨ আজকের দিনটা তোমার জন্য বিশেষ ✨
+    </div>
+
+
+    <!-- TITLE -->
+
+    <h1>
+
+        শুভ জন্মদিন<br>
+
+        Joy! 🎉
+
+    </h1>
+
+
+    <!-- SUBTITLE -->
+
+    <div class="subtitle">
+
+        🎈 Happy Birthday, My Best Friend! 🎈
+
+    </div>
+
+
+    <!-- =================================================
+         BIG WISH
+    ================================================= -->
+
+    <div class="wish">
+
+
+        <div class="wish-title">
+
+            💖 জন্মদিনের অনেক অনেক শুভেচ্ছা 💖
+
+        </div>
+
+
+        <p>
+
+            🎉 <b>শুভ জন্মদিন!</b> 🎂
+
+            আজকের এই সুন্দর দিনে তোর জন্য রইলো
+            অনেক অনেক শুভেচ্ছা, দোয়া এবং শুভকামনা।
+
+            তোর জীবনের প্রতিটি দিন যেন আনন্দ,
+            হাসি আর সুন্দর মুহূর্তে ভরে ওঠে।
+
+        </p>
+
+
+        <p>
+
+            তোর জীবনের নতুন এই বছরটা যেন আগের
+            সব বছরের চেয়ে আরও সুন্দর হয়।
+
+            তোর প্রতিটি স্বপ্ন পূরণ হোক,
+            প্রতিটি ইচ্ছা বাস্তবে পরিণত হোক
+
+            এবং জীবনের প্রতিটি নতুন সুযোগ
+            তোকে সাফল্যের আরও কাছে নিয়ে যাক।
+
+        </p>
+
+
+        <p>
+
+            জীবনে যত বাধাই আসুক,
+            তুই যেন কখনো নিজের উপর বিশ্বাস
+            হারিয়ে না ফেলিস।
+
+            সবসময় সাহস নিয়ে সামনে এগিয়ে যা
+            এবং নিজের স্বপ্নের জন্য চেষ্টা করে যা।
+
+        </p>
+
+
+        <p>
+
+            তোর মুখের হাসিটা যেন সবসময় এমনই থাকে।
+
+            তোর চারপাশে সবসময় ভালো মানুষ,
+            সুন্দর সময় এবং অসংখ্য আনন্দের মুহূর্ত থাকুক।
+
+        </p>
+
+
+        <p>
+
+            পড়াশোনা, ক্যারিয়ার, ভবিষ্যৎ কিংবা জীবনের
+            যেকোনো লক্ষ্য—সবকিছুতেই তুই সফল হ।
+
+            তুই যে স্বপ্নগুলো আজ দেখছিস,
+            একদিন যেন সেগুলো সত্যি করে বলতে পারিস—
+
+            <b>"আমি পেরেছি!"</b> ✨
+
+        </p>
+
+
+        <p>
+
+            আমাদের বন্ধুত্বের এই সুন্দর সময়গুলো
+            যেন সবসময় মনে থাকে।
+
+            একসাথে করা হাসি-ঠাট্টা,
+            আড্ডা, পাগলামি আর অসংখ্য স্মৃতি
+
+            যেন সামনে আরও অনেক বছর ধরে
+            চলতে থাকে। 😄
+
+        </p>
+
+
+        <p>
+
+            আজকের দিনটা শুধু একটা জন্মদিন নয়—
+
+            এটা তোর জীবনের আরও একটি সুন্দর
+            অধ্যায়ের শুরু।
+
+            তাই নতুন বছরটা শুরু হোক নতুন স্বপ্ন,
+            নতুন আশা আর নতুন সাফল্য দিয়ে।
+
+        </p>
+
+
+        <p>
+
+            তোর জন্য মন থেকে একটাই দোয়া—
+
+            <b>
+                আল্লাহ যেন তোকে সবসময় সুস্থ,
+                সুখী ও সফল রাখেন এবং তোর জীবনের
+                প্রতিটি ভালো ইচ্ছা পূরণ করেন।
+            </b>
+
+            🤲
+
+        </p>
+
+
+        <p class="big">
+
+            🎂 শুভ জন্মদিন Joy! 🎂
+
+            <br><br>
+
+            🎉 তোমার জীবনের প্রতিটি দিন<br>
+
+            হাসি, আনন্দ ও সাফল্যে ভরে উঠুক! 🎉
+
+        </p>
+
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <div class="footer">
+
+        ✨ Made By DIPU ✨
+
+    </div>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+
+/* =====================================================
+   STARS
+===================================================== */
+
+const bg = document.getElementById("bg");
+
+for(let i = 0; i < 120; i++){
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    bg.appendChild(star);
+}
+
+
+/* =====================================================
+   BIRTHDAY PAPER
+===================================================== */
+
+const birthdayItems = [
+
+    "🎉",
+    "🎂",
+    "🎈",
+    "✨",
+    "🎊",
+    "🥳",
+    "⭐",
+    "💖",
+    "🎁",
+    "HAPPY",
+    "BIRTHDAY"
+
+];
+
+
+function createPaper(){
+
+    const paper =
+        document.createElement("div");
+
+    paper.className = "paper";
+
+    paper.innerHTML =
+        birthdayItems[
+            Math.floor(
+                Math.random() *
+                birthdayItems.length
+            )
+        ];
+
+    paper.style.left =
+        Math.random() * 100 + "vw";
+
+    paper.style.fontSize =
+        (Math.random() * 15 + 14) + "px";
+
+    paper.style.animationDuration =
+        (Math.random() * 5 + 5) + "s";
+
+    paper.style.animationDelay =
+        (Math.random() * 2) + "s";
+
+    document.body.appendChild(paper);
+
+
+    setTimeout(() => {
+
+        paper.remove();
+
+    },10000);
+
+}
+
+
+/* Continuous birthday paper */
+
+setInterval(createPaper,180);
+
+
+/* Initial burst */
+
+for(let i = 0; i < 60; i++){
+
+    setTimeout(() => {
+
+        createPaper();
+
+    }, i * 50);
+
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+const music =
+    document.getElementById("birthdayMusic");
+
+const musicBtn =
+    document.getElementById("musicBtn");
+
+
+/* Music volume */
+
+music.volume = 0.7;
+
+
+/* Autoplay attempt */
+
+window.addEventListener("load", async () => {
+
+    try{
+
+        await music.play();
+
+        musicBtn.innerHTML =
+            "🔊 Music On";
+
+    }
+
+    catch(error){
+
+        musicBtn.innerHTML =
+            "🎵 Play Music";
+
+    }
+
+});
+
+
+/* Music button */
+
+musicBtn.addEventListener("click", async () => {
+
+    if(music.paused){
+
+        try{
+
+            await music.play();
+
+            musicBtn.innerHTML =
+                "🔊 Music On";
+
+        }
+
+        catch(error){
+
+            console.log(
+                "Music could not play."
+            );
+
+        }
+
+    }
+
+    else{
+
+        music.pause();
+
+        musicBtn.innerHTML =
+            "🎵 Play Music";
+
+    }
+
+});
+
+
+/* =====================================================
+   10 SECOND COUNTDOWN
+===================================================== */
+
+let timeLeft = 10;
+
+const countdownScreen =
+    document.getElementById(
+        "countdownScreen"
+    );
+
+const timer =
+    document.getElementById("timer");
+
+
+const countdown =
+    setInterval(() => {
+
+        timeLeft--;
+
+        timer.textContent =
+            timeLeft;
+
+
+        if(timeLeft <= 0){
+
+            clearInterval(countdown);
+
+            timer.textContent =
+                "🎉";
+
+
+            setTimeout(() => {
+
+                countdownScreen.style.opacity =
+                    "0";
+
+
+                setTimeout(() => {
+
+                    countdownScreen.style.display =
+                        "none";
+
+                },1000);
+
+            },700);
+
+        }
+
+    },1000);
+
+
+</script>
+
+</body>
+</html>
+```
